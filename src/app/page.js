@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import Technology from "@/app/technology/page";
-import Image from "next/image";
 import SSRTechnology from "./ssr-technology/page";
+import Meals from "./csr-meals/page";
 
 export default function Home() {
   return (
@@ -9,6 +9,7 @@ export default function Home() {
       <Hero />
       <Technology />
       <SSRTechnology />
+      {/* <Meals /> */}
     </div>
   );
 }

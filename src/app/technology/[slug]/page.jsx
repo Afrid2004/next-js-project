@@ -1,5 +1,4 @@
-"use client";
-import React, { use } from "react";
+import React from "react";
 import { Technologies } from "../../../../public/Data";
 import { creteSlug } from "@/utility/createSlug";
 import { notFound } from "next/navigation";
@@ -11,8 +10,19 @@ import {
   Info,
 } from "lucide-react";
 
-const TechPage = ({ params }) => {
-  const { slug } = use(params);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const filteredTech = Technologies?.find(
+    (data) => creteSlug(data.title) === slug,
+  );
+  return {
+    title: filteredTech.title,
+    description: filteredTech.description,
+  };
+}
+
+const TechPage = async ({ params }) => {
+  const { slug } = await params;
   const filteredTech = Technologies?.find(
     (data) => creteSlug(data.title) === slug,
   );

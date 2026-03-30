@@ -1,6 +1,11 @@
 import React from "react";
 import { Quote } from "lucide-react";
 
+export const metadata = {
+  title: "About",
+  description: "Design and developed by MD Faisal Yousuf Afrid",
+};
+
 const Page = () => {
   return (
     <div>

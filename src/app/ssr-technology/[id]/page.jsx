@@ -18,6 +18,16 @@ const getDynamicData = async () => {
   return data;
 };
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const product = await getDynamicData();
+  const singleData = product.find((data) => data.id == id);
+  return {
+    title: singleData.title,
+    description: singleData.description,
+  };
+}
+
 const SSRTechpage = async ({ params }) => {
   const { id } = await params;
   const fetchData = await getDynamicData();
