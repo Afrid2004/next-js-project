@@ -1,5 +1,6 @@
 import { CookingPot, Flag, Info, Play, Salad, Tags } from "lucide-react";
 import React from "react";
+
 const getData = async (search) => {
   const res = await fetch(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${search}`,
@@ -7,6 +8,7 @@ const getData = async (search) => {
   const data = await res.json();
   return data.meals;
 };
+
 const Page = async ({ params }) => {
   const { id } = await params;
   const singleData = await getData(id);

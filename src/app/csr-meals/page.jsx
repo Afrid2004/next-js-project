@@ -1,30 +1,31 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import Topic from "@/components/Topic";
-import MealSearch from "./mealSearch";
 
-const Meals = async ({ searchParams }) => {
-  const params = searchParams;
-  const searchQuery = params?.search || "";
-  console.log(searchQuery);
-
+const Meals = () => {
+  const [search, setSearch] = useState("");
+  const [mealData, setMealData] = useState([]);
   const fetchMeals = async () => {
     try {
       const res = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`,
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`,
       );
       if (!res.ok) {
         throw new Error("Failed to fetch data");
       }
       const data = await res.json();
-      return data.meals;
+      return setMealData(data.meals);
     } catch (err) {
       console.log(err.message);
       return [];
     }
   };
-  const mealData = await fetchMeals();
+
+  useEffect(() => {
+    fetchMeals();
+  }, [search]);
 
   return (
     <div className="py-15">
@@ -33,7 +34,17 @@ const Meals = async ({ searchParams }) => {
         <h4 className="mb-3 text-[30px] font-bold text-center">
           Mealdb Foods
         </h4>{" "}
-        <Topic title="CSR Meal DB " /> <MealSearch />{" "}
+        <Topic title="CSR Meal DB " />
+        <div className="flex justify-center mb-3">
+          <input
+            type="text"
+            className="border-2 border-gray-900 text-white p-2 rounded-[5px]"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search food..."
+            required
+          />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {" "}
           {mealData?.slice(0, 8).map((data) => {
