@@ -1,4 +1,5 @@
 import { CookingPot, Flag, Info, Play, Salad, Tags } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 const getData = async (search) => {
@@ -77,7 +78,13 @@ const Page = async ({ params }) => {
             {" "}
             <div>
               {" "}
-              <img src={strMealThumb} className="rounded-2xl" alt="next" />{" "}
+              <Image
+                width={700}
+                height={700}
+                src={strMealThumb}
+                className="rounded-2xl"
+                alt="next"
+              />{" "}
             </div>{" "}
           </div>{" "}
         </div>{" "}

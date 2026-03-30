@@ -4,6 +4,7 @@ import Link from "next/link";
 import { creteSlug } from "@/utility/createSlug";
 import { ExternalLink } from "lucide-react";
 import Topic from "@/components/Topic";
+import Image from "next/image";
 
 const Technology = () => {
   return (
@@ -23,7 +24,13 @@ const Technology = () => {
               >
                 <div className="flex flex-col justify-center items-center text-center h-full">
                   <div className="w-full flex justify-center items-center mb-3">
-                    <img className="w-15" src={image} alt={title} />
+                    <Image
+                      width={350}
+                      height={350}
+                      className="w-15"
+                      src={image}
+                      alt={title}
+                    />
                   </div>
                   <h4 className="text-[20px] font-bold mb-3">{title}</h4>
                   <p className=" line-clamp-2 mb-3">{description}</p>

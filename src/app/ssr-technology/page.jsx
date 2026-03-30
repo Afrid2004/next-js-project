@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import Topic from "@/components/Topic";
+import Image from "next/image";
 
 const getData = async () => {
   const res = await fetch(
@@ -30,7 +31,13 @@ const SSRTechnology = async () => {
               >
                 <div className="flex flex-col justify-center items-center text-center h-full">
                   <div className="w-full flex justify-center items-center mb-3">
-                    <img className="w-15" src={image} alt={title} />
+                    <Image
+                      className="w-15"
+                      width={350}
+                      height={350}
+                      src={image}
+                      alt={title}
+                    />
                   </div>
                   <h4 className="text-[20px] font-bold mb-3">{title}</h4>
                   <p className=" line-clamp-2 mb-3">{description}</p>

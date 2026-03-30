@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import Topic from "@/components/Topic";
+import Image from "next/image";
 
 const Meals = () => {
   const [search, setSearch] = useState("");
@@ -56,10 +57,12 @@ const Meals = () => {
               >
                 <div className="flex flex-col justify-center items-center text-center h-full">
                   <div className="w-full flex justify-center items-center mb-3">
-                    <img
+                    <Image
                       className="aspect-4/3 rounded-xl"
                       src={strMealThumb}
                       alt={strMeal}
+                      width={700}
+                      height={700}
                     />
                   </div>
                   <h4 className="text-[20px] font-bold mb-3">{strMeal}</h4>{" "}

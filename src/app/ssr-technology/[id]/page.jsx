@@ -1,7 +1,5 @@
 import React from "react";
-import { Technologies } from "../../../../public/Data";
-import { creteSlug } from "@/utility/createSlug";
-import { notFound } from "next/navigation";
+
 import {
   BadgeCheck,
   Calendar,
@@ -9,6 +7,7 @@ import {
   GraduationCap,
   Info,
 } from "lucide-react";
+import Image from "next/image";
 
 const getDynamicData = async () => {
   const res = await fetch(
@@ -66,7 +65,13 @@ const SSRTechpage = async ({ params }) => {
         <div className="col-span-12 lg:col-span-4">
           <div className="bg-gray-900/60 p-5 rounded-3xl h-full flex justify-center items-center">
             <div>
-              <img src={image} className="w-60" alt={title} />
+              <Image
+                width={350}
+                height={350}
+                src={image}
+                className="w-60"
+                alt={title}
+              />
             </div>
           </div>
         </div>
@@ -108,8 +113,10 @@ const SSRTechpage = async ({ params }) => {
           <div className="bg-gray-900/60 p-5 rounded-3xl">
             <div>
               <a href={creatorLink} target="_blank">
-                <img
+                <Image
                   className="rounded-2xl aspect-4/3 object-top object-cover mb-3"
+                  width={490}
+                  height={490}
                   src={creatorImage}
                   alt={creator}
                 />
