@@ -27,3 +27,23 @@ body {
 .container{
   @apply px-4 lg:px-0 w-full max-w-100 sm:max-w-150 md:max-w-187.5 lg:max-w-250 xl:max-w-300 2xl:max-w-325 mx-auto;
 }
+
+.animated-bar{
+  left:0;
+  animation: load 1s linear infinite;
+}
+
+@keyframes load {
+  0%{
+    left: 0;
+    width: 20%;
+  }
+  50%{
+    left: 80%;
+    width: 20%;
+  }
+  100%{
+    left: 0;
+    width: 20%;
+  }
+}
